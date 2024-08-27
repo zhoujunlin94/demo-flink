@@ -21,7 +21,7 @@ public class MysqlSourceStreamJob {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
 
-        DataStreamSource<List<Entity>> mysqlDS = env.addSource(new MysqlTableSource());
+        DataStreamSource<List<Entity>> mysqlDS = env.addSource(new MysqlSource());
 
         SingleOutputStreamOperator<String> streamOperator = mysqlDS.flatMap(new FlatMapFunction<List<Entity>, String>() {
             @Override

@@ -1,8 +1,8 @@
 package io.github.zhoujunlin94.connector.kafka2mysql;
 
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.setting.Setting;
 import com.alibaba.fastjson.JSONObject;
+import io.github.zhoujunlin94.common.SettingFactory;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.configuration.Configuration;
@@ -22,7 +22,7 @@ public class Kafka2MysqlStreamJob {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
 
-        Properties kafkaProps = new Setting("conf.setting").getProperties("kafka");
+        Properties kafkaProps = SettingFactory.CONF_SETTING.getProperties("kafka");
         FlinkKafkaConsumer<String> consumer = new FlinkKafkaConsumer<>("flink-kafka-test", new SimpleStringSchema(), kafkaProps);
         consumer.setStartFromEarliest();
 

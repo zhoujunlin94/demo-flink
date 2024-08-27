@@ -1,7 +1,7 @@
 package io.github.zhoujunlin94.connector.kafka;
 
-import cn.hutool.setting.Setting;
 import com.alibaba.fastjson.JSONObject;
+import io.github.zhoujunlin94.common.SettingFactory;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.configuration.Configuration;
@@ -20,8 +20,7 @@ import java.util.Properties;
 public class KafkaSourceStreamJob {
 
     public static void main(String[] args) throws Exception {
-        Setting setting = new Setting("conf.setting");
-        Properties kafkaProps = setting.getProperties("kafka");
+        Properties kafkaProps = SettingFactory.CONF_SETTING.getProperties("kafka");
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
         FlinkKafkaConsumer<String> consumer = new FlinkKafkaConsumer<>("flink-kafka-test", new SimpleStringSchema(), kafkaProps);
@@ -31,9 +30,9 @@ public class KafkaSourceStreamJob {
 
         SingleOutputStreamOperator<String> streamOperator = kafkaDS.flatMap(new FlatMapFunction<String, String>() {
             @Override
-            public void flatMap(String value, Collector<String> collector) throws Exception {
+            public void flatMap(String value, Collector<String> collector) {
                 JSONObject json = JSONObject.parseObject(value);
-                collector.collect("姓名：" + json.getString("userName") + ", 排名：" + json.getInteger("idx"));
+                collector.collect("userId：" + json.getString("user_id") + ", 订单号：" + json.getString("order_token"));
             }
         }).setParallelism(2);
 
