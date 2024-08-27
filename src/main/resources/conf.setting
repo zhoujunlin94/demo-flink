@@ -8,9 +8,9 @@ value.deserializer = org.apache.kafka.common.serialization.StringDeserializer
 auto.offset.reset = latest
 
 [datasource-test]
-url = jdbc:mysql://localhost:3306/test
+url = jdbc:mysql://127.0.0.1:3306/test?useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&useUnicode=true&autoReconnect=true&failOverReadOnly=false&useAffectedRows=true
 user = root
-pass = 123456
+pass = root
 
 ## 可选配置
 # 是否在日志中显示执行的SQL
