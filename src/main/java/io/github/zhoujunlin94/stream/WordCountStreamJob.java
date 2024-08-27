@@ -1,4 +1,4 @@
-package io.github.zhoujunlin94;
+package io.github.zhoujunlin94.stream;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.functions.KeySelector;

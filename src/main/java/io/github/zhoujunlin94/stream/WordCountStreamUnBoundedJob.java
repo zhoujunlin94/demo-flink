@@ -1,4 +1,4 @@
-package io.github.zhoujunlin94;
+package io.github.zhoujunlin94.stream;
 
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
@@ -15,7 +15,7 @@ import org.apache.flink.util.Collector;
  * 程序不会退出  一直等事件
  * <p>
  * mvn clean package之后  提交任务到管理平台
- * io.github.zhoujunlin94.WordCountStreamUnBoundedJob
+ * io.github.zhoujunlin94.stream.WordCountStreamUnBoundedJob
  *
  *
  * 并行度优先级：  代码设置算子 > env设置 > 提交时命令行指令 > 配置文件中配置

@@ -12,7 +12,9 @@
 		<maven.compiler.source>${target.java.version}</maven.compiler.source>
 		<maven.compiler.target>${target.java.version}</maven.compiler.target>
 
+		<hutool.version>5.8.11</hutool.version>
 		<flink.version>1.17.2</flink.version>
+		<fastjson.version>1.2.83</fastjson.version>
 	</properties>
 
 	<dependencies>
@@ -38,6 +40,22 @@
 			<artifactId>flink-runtime-web</artifactId>
 			<version>${flink.version}</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-connector-kafka</artifactId>
+			<version>${flink.version}</version>
 		</dependency>
 
 	</dependencies>
