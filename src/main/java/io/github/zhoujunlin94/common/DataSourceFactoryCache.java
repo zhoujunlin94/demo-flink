@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author zhoujunlin
  * @date 2024-08-27-14:48
  */
-public class DSFactoryCache {
+public class DataSourceFactoryCache {
 
     private static final Map<String, DSFactory> DS_FACTORY_CACHE = new ConcurrentHashMap<>();
     private static final String SUFFIX = "-ds-factory";

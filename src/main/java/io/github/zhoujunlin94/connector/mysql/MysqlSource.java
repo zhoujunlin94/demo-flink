@@ -4,7 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.db.Db;
 import cn.hutool.db.Entity;
 import cn.hutool.db.ds.DSFactory;
-import io.github.zhoujunlin94.common.DSFactoryCache;
+import io.github.zhoujunlin94.common.DataSourceFactoryCache;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.source.RichSourceFunction;
 
@@ -21,7 +21,7 @@ public class MysqlSource extends RichSourceFunction<List<Entity>> {
     @Override
     public void open(Configuration parameters) throws Exception {
         super.open(parameters);
-        this.dsFactory = DSFactoryCache.get("datasource-test");
+        this.dsFactory = DataSourceFactoryCache.get("datasource-test");
     }
 
     @Override
