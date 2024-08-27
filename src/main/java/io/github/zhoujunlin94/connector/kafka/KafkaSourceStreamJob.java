@@ -27,7 +27,6 @@ public class KafkaSourceStreamJob {
         consumer.setStartFromLatest();
 
         DataStreamSource<String> kafkaDS = env.addSource(consumer);
-
         SingleOutputStreamOperator<String> streamOperator = kafkaDS.flatMap(new FlatMapFunction<String, String>() {
             @Override
             public void flatMap(String value, Collector<String> collector) {

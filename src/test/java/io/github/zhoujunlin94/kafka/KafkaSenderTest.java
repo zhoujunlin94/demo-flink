@@ -1,4 +1,4 @@
-package io.github.zhoujunlin94.connector.kafka;
+package io.github.zhoujunlin94.kafka;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.zhoujunlin94.common.SettingFactory;
@@ -11,7 +11,7 @@ import java.util.Properties;
  * @author zhoujunlin
  * @date 2024-08-27-11:36
  */
-public class KafkaSender {
+public class KafkaSenderTest {
 
     private static KafkaProducer<String, Object> kafkaProducer() {
         Properties kafkaProps = SettingFactory.CONF_SETTING.getProperties("kafka");
