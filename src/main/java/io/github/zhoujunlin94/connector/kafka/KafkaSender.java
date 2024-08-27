@@ -19,6 +19,23 @@ public class KafkaSender {
         KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProps);
 
         for (int i = 1; i <= 100; i++) {
+            String msg = new JSONObject().fluentPut("table_name", "t_order").fluentPut("user_id", i).fluentPut("order_token", "ORDER" + i).toJSONString();
+            ProducerRecord<String, String> record = new ProducerRecord<>("flink-kafka-test", null, null, msg);
+            producer.send(record);
+            System.out.println("发送数据: " + msg);
+            Thread.sleep(1000);
+        }
+
+        producer.flush();
+    }
+
+
+    private static void send() throws InterruptedException {
+        Setting setting = new Setting("conf.setting");
+        Properties kafkaProps = setting.getProperties("kafka");
+        KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProps);
+
+        for (int i = 1; i <= 100; i++) {
             String msg = new JSONObject().fluentPut("userName", "test" + i).fluentPut("idx", i).toJSONString();
             ProducerRecord<String, String> record = new ProducerRecord<>("flink-kafka-test", null, null, msg);
             producer.send(record);
@@ -28,5 +45,6 @@ public class KafkaSender {
 
         producer.flush();
     }
+
 
 }
